@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Candidates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<body>
+    <div class="main-content">
+        <h1>Vote for Candidates</h1>
+        <div class="candidates-list">
+            {% for candidate in candidates %}
+            <div class="candidate">
+                <img src="{{ candidate.image_url }}" alt="Profile Image">
+                <h2>{{ candidate.name }}</h2>
+                <p>Age: {{ candidate.age }}</p>
+                <p>Position: {{ candidate.position }}</p>
+                <button onclick="voteForCandidate('{{ candidate.id }}')">Vote</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        // TODO JavaScript function to vote for a candidate
+        function voteForCandidate(candidateId) {
+            // TODO AJAX request to send vote to server
+            console.log('Voting for candidate with ID:', candidateId);
+            // TODO: Add AJAX call here
+        }
+    </script>
+</body>
+</html>
