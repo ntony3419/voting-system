@@ -11,7 +11,10 @@ def login():
     username = request.form['username']
     password = request.form['password']
     # TODO : verify login information and redirect to dashboard if all is correect
-    return redirect(url_for('home'))
+    if verify_cred(username,password):
+        return redirect(url_for('dashboard'))
+    else:
+        return redirect(url_for('home, error = "invalid credential'))
 
 @app.route('/forgot-password')
 def forgot_password():
@@ -43,6 +46,9 @@ def logout():
 
 def fetch_candidates():
     pass
+def verify_cred(username, password):
+    # TODO: method to validate the username and password 
+    return True
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
