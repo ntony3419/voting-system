@@ -43,7 +43,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // when click add candidate
-            document.querySelector('a[href="/add-candidate"]').addEventListener('click', function(event) {
+            document.getElementById('add-candidate').addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent the default link behavior
                         
                 document.querySelector('.main-content').innerHTML = '';
