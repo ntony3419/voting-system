@@ -42,7 +42,9 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            
             // when click add candidate
+        
             document.getElementById('add-candidate').addEventListener('click', function(event) {
                 event.preventDefault(); 
                 console.log('Add Candidate clicked'); //show in console the action
@@ -52,6 +54,7 @@
                 var formHtml = document.getElementById('candidate-form').innerHTML;
                 document.querySelector('.main-content').innerHTML = formHtml;
             });
+          
         });
         </script>
 </body>
