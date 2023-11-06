@@ -15,7 +15,7 @@
             <div class="menu-section">
                 <ul>
                     <li><a href="/vote">Vote</a></li>
-                    <li><a href="#" id="add-candidate-link">Add Candidate</a></li>
+                    <li><a href="#" id="add-candidate">Add Candidate</a></li>
                     <li><a href="/logout">Log Out</a></li>
                 </ul>
             </div>
@@ -44,8 +44,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // when click add candidate
             document.getElementById('add-candidate').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-                        
+                event.preventDefault(); 
                 document.querySelector('.main-content').innerHTML = '';
         
                 // show the candidate form
