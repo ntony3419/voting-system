@@ -55,3 +55,14 @@ body, html {
 }
 
 /* Add more styling as needed */
+#add-candidate-form {
+    width: 80%; 
+    padding: 20px; 
+    box-sizing: border-box;
+}
+.main-content {
+    flex-grow: 1; 
+    padding: 20px; 
+    /* background-color: #ffffff;  */
+    overflow-y: auto; 
+}
