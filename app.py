@@ -1,6 +1,44 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
+from pymongo import MongoClient
+import jsonify
+
 app = Flask(__name__)
+
+#mongodb connection
+client = MongoClient('mongodb://localhost:27017/')
+db=client['voting_system']
+
+# users colelction
+users = db.users 
+
+## mongodb operation
+# add user function
+@app.route('/add-user', methods=['POST'])
+def add_user():
+    name = request.form['name']
+    age = request.form['age']
+    position = request.form['position']
+    
+    user_id = users.insert_one({'name': name, 'age': age, 'position': position}).inserted_id
+    return jsonify({'id': str(user_id)})
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    all_users = list(users.find())
+    return jsonify(all_users)
+
+@app.route('/update-users/<user_id>', methods=['POST'])
+def update_user(user_id):
+    # algorithm for update user
+    pass
+
+@app.route('/delete-user/<user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    result = users.delete_one({'_id': ObjectId(user_id)})
+    return jsonify({'deleted': result.deleted_count})
+
+
 
 @app.route('/')
 def home():
