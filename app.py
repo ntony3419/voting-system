@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
 from pymongo import MongoClient
-import jsonify
+
 
 app = Flask(__name__)
 
