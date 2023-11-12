@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('cancel-btn').addEventListener('click', function() {
         document.getElementById('register-popup').style.display = 'none';
     });
-});
 
 
 // Login button
-document.addEventListener('DOMContentLoaded', function() {
+
     $(document).ready(function() {
         $('form').on('submit', function(e) {
             e.preventDefault(); // Prevent the default form submission
@@ -34,8 +33,42 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+
+
+
+
+
+    // Attach event listener to the form submit button
+
+    document.getElementById('add-user-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submit
+        addCandidate();
+    });
+
+
+
+    // function to add candidate            
+    // when click add candidate
+    document.getElementById('add-candidate').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        console.log('Add Candidate clicked'); //show in console the action
+        document.querySelector('.main-content').innerHTML = '';
+
+        // show the candidate form
+        var formHtml = document.getElementById('candidate-form').innerHTML;
+        document.querySelector('.main-content').innerHTML = formHtml;
+    });
+  
 });
 
+// FUNCTION TO VOTE 
+// TODO JavaScript function to vote for a candidate
+function voteForCandidate(candidateId) {
+    // TODO AJAX request to send vote to server
+    console.log('Voting for candidate with ID:', candidateId);
+    // TODO: Add AJAX call here
+}
 
 //function to send data to add a user
 function addUser() {
@@ -59,38 +92,4 @@ function addUser() {
         console.error('Error:', error);
         // Handle errors here
     });
-}
-
-// Attach event listener to the form submit button
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('add-user-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submit
-        addCandidate();
-    });
-});
-
-
-// function to add candidate
-document.addEventListener('DOMContentLoaded', function() {
-            
-    // when click add candidate
-
-    document.getElementById('add-candidate').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        console.log('Add Candidate clicked'); //show in console the action
-        document.querySelector('.main-content').innerHTML = '';
-
-        // show the candidate form
-        var formHtml = document.getElementById('candidate-form').innerHTML;
-        document.querySelector('.main-content').innerHTML = formHtml;
-    });
-  
-});
-
-// FUNCTION TO VOTE 
-// TODO JavaScript function to vote for a candidate
-function voteForCandidate(candidateId) {
-    // TODO AJAX request to send vote to server
-    console.log('Voting for candidate with ID:', candidateId);
-    // TODO: Add AJAX call here
 }
