@@ -40,23 +40,7 @@
             <button type="submit">Add</button>
         </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // when click add candidate
-        
-            document.getElementById('add-candidate').addEventListener('click', function(event) {
-                event.preventDefault(); 
-                console.log('Add Candidate clicked'); //show in console the action
-                document.querySelector('.main-content').innerHTML = '';
-        
-                // show the candidate form
-                var formHtml = document.getElementById('candidate-form').innerHTML;
-                document.querySelector('.main-content').innerHTML = formHtml;
-            });
-          
-        });
-        </script>
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
 </body>
 
     

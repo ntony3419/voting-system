@@ -22,13 +22,6 @@
             {% endfor %}
         </div>
     </div>
-    <script>
-        // TODO JavaScript function to vote for a candidate
-        function voteForCandidate(candidateId) {
-            // TODO AJAX request to send vote to server
-            console.log('Voting for candidate with ID:', candidateId);
-            // TODO: Add AJAX call here
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
 </body>
 </html>

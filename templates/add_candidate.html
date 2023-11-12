@@ -23,14 +23,6 @@
             <button type="submit">Add Candidate</button>
         </form>
     </div>
-    <script>
-        // TODO JavaScript to handle the form submission
-        document.getElementById('add-candidate-form').onsubmit = function(event) {
-            event.preventDefault();
-            // TODO  AJAX request to add candidate to server
-            console.log('Adding new candidate');
-            // TODO Add AJAX call here
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
 </body>
 </html>

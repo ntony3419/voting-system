@@ -8,7 +8,60 @@ body, html {
     display: flex;
     height: 100%;
 }
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
 
+.login-box {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #0056b3;
+}
+
+.login-box a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.login-box a:hover {
+    text-decoration: underline;
+}
 .sidebar {
     width: 25%;
     background-color: #f4f4f4;
@@ -66,3 +119,18 @@ body, html {
     /* background-color: #ffffff;  */
     overflow-y: auto; 
 }
+
+
+/* START Registration form pop up styling*/
+#register-popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+/* END Registration form pop up styling*/
