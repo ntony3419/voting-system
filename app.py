@@ -54,7 +54,7 @@ def login():
     else:
         return redirect(url_for('home, error = "invalid credential'))
 
-@app.route('register', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register():
     username = request.json['username']
     password = request.json['password']
