@@ -64,6 +64,8 @@ def register():
     # TODO: adduser data into database
     return jsonify({'message': 'user registered'})
 
+
+
 @app.route('/forgot-password')
 def forgot_password():
     # TODO : logic for reset password
