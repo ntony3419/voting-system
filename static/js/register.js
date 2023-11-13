@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('register-form').addEventListener('submit', function(event) {
+    document.getElementById('register-form').addEventListener('submit', function() {
         event.preventDefault(); //prevent the default form submit
 
         const userData = {
