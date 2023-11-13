@@ -22,4 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+    // register button
+    const registerBtn = document.getElementById('register-btn');
+    const registerPopup = document.getElementById('register-popup');
+
+    if (registerBtn && registerPopup) {
+        registerBtn.addEventListener('click', function() {
+            registerPopup.style.display = 'block';
+        });
+    }
 });
