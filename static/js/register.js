@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('register-form').addEventListener('submit', function() {
+    document.getElementById('register-form').addEventListener('submit', function(event) {
         event.preventDefault(); //prevent the default form submit
 
         const userData = {
@@ -28,3 +28,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+d
