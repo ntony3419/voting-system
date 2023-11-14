@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerBtn = document.getElementById('register-btn');
     const registerPopup = document.getElementById('register-popup');
     const closeBtn = document.getElementById('close-popup'); 
-    const registerForm = document.getElementById('register-form'); 
+    const registerContent = document.querySelector('.popup-content'); 
     if (registerBtn) {
         registerBtn.addEventListener('click', function(event) {
             event.preventDefault();
@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
             registerPopup.style.display = 'none';
         });
     }
-    //close pop up if click outside
+    //close pop up if click outside of the form
     window.addEventListener('click', function(event) {
-        if (event.target === registerPopup) {
+        if (!registerContent.contains(event.target) && event.target !== registerBtn) {
             registerPopup.style.display = 'none';
         }
     });
