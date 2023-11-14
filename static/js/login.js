@@ -23,25 +23,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // register button
     const registerBtn = document.getElementById('register-btn');
     const registerPopup = document.getElementById('register-popup');
+    const closeBtn = document.getElementById('close-popup'); 
+    const registerForm = document.getElementById('register-form'); 
     if (registerBtn) {
         registerBtn.addEventListener('click', function(event) {
             event.preventDefault();
-            document.getElementById('register-popup').style.display = 'block';
+            registerPopup.style.display = 'block';
         });
-    
-        //Close button event listener for the popup
-        const closeBtn = document.getElementById('close-popup');
+   
+
+    }
+    //close button
+    if (closeBtn) {
         closeBtn.addEventListener('click', function(event) {
-            document.getElementById('register-popup').style.display = 'none';
+            event.preventDefault();
+            registerPopup.style.display = 'none';
         });
-        
-        // close form for clicking outside of the register form
-        window.addEventListener('click', function(event) {
-        if (!registerPopup.contains(event.target))  {
+    }
+    //close pop up if click outside
+    window.addEventListener('click', function(event) {
+        if (event.target === registerPopup) {
             registerPopup.style.display = 'none';
         }
     });
-    }
+    // form submission    
     attachRegisterFormListener();
 });
 function attachRegisterFormListener() {
