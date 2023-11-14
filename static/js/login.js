@@ -30,12 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('register-popup').style.display = 'block';
         });
     
-        //close button event listener for the popup
+        //Close button event listener for the popup
         const closeBtn = document.getElementById('close-popup');
         closeBtn.addEventListener('click', function(event) {
             document.getElementById('register-popup').style.display = 'none';
         });
     }
+    attachRegisterFormListener();
 });
 function attachRegisterFormListener() {
     const registerForm = document.getElementById('register-form');
