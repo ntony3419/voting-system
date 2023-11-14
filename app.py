@@ -61,7 +61,7 @@ def register():
     email = request.json['email']
     phone = request.json['phone']
 
-    # TODO: adduser data into database
+    # TODO: get data from encrypted function in login.js and process it to database
     return jsonify({'message': 'user registered'})
 
 
