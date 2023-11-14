@@ -23,8 +23,8 @@ body, html {
 }
 
 .sidebar {
-    width: 25%; 
-    background-color: #f4f4f4;
+    width: 100%; 
+    background-color: #bebebe;
     display: flex;
     flex-direction: column;
     justify-content: center;
