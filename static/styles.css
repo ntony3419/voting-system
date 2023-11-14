@@ -3,9 +3,11 @@ body, html {
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100vh; 
+    width:100%;
     display: flex;
     justify-content: flex-start; 
     align-items: flex-start; 
+
     background-color: #f4f4f4;
 }
 
@@ -13,6 +15,7 @@ body, html {
 .dashboard {
     display: flex;
     height: 100vh; 
+    width:100%
     background-color: #f4f4f4;
 }
 /*START  side bar in dashboard */
@@ -23,7 +26,7 @@ body, html {
 }
 
 .sidebar {
-    width: 100%; 
+    width: 25%; 
     background-color: #bebebe;
     display: flex;
     flex-direction: column;
@@ -60,6 +63,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width:100%;
     background-color: #f4f4f4;
 }
 
@@ -112,7 +116,7 @@ body {
 
 /*add more styling as needed */
 #add-candidate-form {
-    width: 80%; 
+    width: 75%; 
     padding: 20px; 
     box-sizing: border-box;
 }
