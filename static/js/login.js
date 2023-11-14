@@ -25,15 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // register button
     const registerBtn = document.getElementById('register-btn');
     if (registerBtn) {
-        registerBtn.addEventListener('click', function() {
-            // Load the registration form and display it as a popup
-            fetch('/register.html') // Adjust the path to your register.html
-                .then(response => response.text())
-                .then(html => {
-                    document.body.insertAdjacentHTML('beforeend', html);
-                    attachRegisterFormListener();
-                })
-                .catch(error => console.error('Error loading registration form:', error));
+        registerBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('register-popup').style.display = 'block';
+        });
+    
+        //close button event listener for the popup
+        const closeBtn = document.getElementById('close-popup');
+        closeBtn.addEventListener('click', function(event) {
+            document.getElementById('register-popup').style.display = 'none';
         });
     }
 });
