@@ -1,72 +1,56 @@
-<!-- Include this script in your HTML file -->
 
-    async function generateRandomKey() {
-        return crypto.subtle.generateKey(
-            { name: 'AES-CBC', length: 256 },
-            true,
-            ['encrypt', 'decrypt']
-        );
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // ... Your existing code ...
 
-    async function encryptText(randomKey, text) {
-        const iv = crypto.getRandomValues(new Uint8Array(16));
-        const encodedText = new TextEncoder().encode(text);
-        const encryptedData = await crypto.subtle.encrypt(
-            { name: 'AES-CBC', iv },
-            randomKey,
-            encodedText
-        );
+        // Attach event listener to the registration form submit button
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submit
+            registerUser();
+        });
+    });
 
-        return {
-            iv: btoa(String.fromCharCode.apply(null, iv)),
-            encryptedData: btoa(String.fromCharCode.apply(null, new Uint8Array(encryptedData)))
-        };
-    }
-
-    // ...
-
-    // Modify the addUser function to include encryption
-    function addUser() {
-        const name = document.getElementById('name').value;
-        const age = document.getElementById('age').value;
-        const position = document.getElementById('position').value;
+    async function registerUser() {
+        const username = document.getElementById('reg-username').value;
+        const password = document.getElementById('reg-password').value;
+        const email = document.getElementById('reg-email').value;
+        const phone = document.getElementById('reg-phone').value;
+        // Add more fields as needed
 
         // Generate a random key for this transaction
-        generateRandomKey().then(randomKey => {
-            // Encrypt user data
-            encryptText(randomKey, name)
-                .then(encryptedName => {
-                    encryptText(randomKey, age)
-                        .then(encryptedAge => {
-                            encryptText(randomKey, position)
-                                .then(encryptedPosition => {
-                                    // Send the encrypted data and the random key to the server
-                                    fetch('/add-user', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                            name: encryptedName,
-                                            age: encryptedAge,
-                                            position: encryptedPosition,
-                                            key: btoa(String.fromCharCode.apply(null, new Uint8Array(randomKey)))
-                                        }),
-                                    })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            console.log('Success:', data);
-                                            // Handle success - maybe update the UI or show a message
-                                        })
-                                        .catch((error) => {
-                                            console.error('Error:', error);
-                                            // Handle errors here
-                                        });
-                                });
-                        });
-                });
+        const randomKey = await generateRandomKey();
+
+        // Encrypt user data
+        const encryptedUsername = await encryptText(randomKey, username);
+        const encryptedPassword = await encryptText(randomKey, password);
+        const encryptedEmail = await encryptText(randomKey, email);
+        const encryptedPhone = await encryptText(randomKey, phone);
+        // Add more fields as needed
+
+        // Send the encrypted data and the random key to the server
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: encryptedUsername,
+                password: encryptedPassword,
+                email: encryptedEmail,
+                phone: encryptedPhone,
+                // Add more fields as needed
+                key: btoa(String.fromCharCode.apply(null, new Uint8Array(randomKey)))
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Registration Success:', data);
+            // TODO: show pop up message register successfully
+            registerPopup.style.display = 'none';
+        })
+        .catch((error) => {
+            console.error('Registration Error:', error);
+            // TODO: handle errors
         });
     }
 
-    // You can similarly modify the fetchUserData function for decryption
-
+ 
