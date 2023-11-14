@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registerBtn) {
         registerBtn.addEventListener('click', function() {
             // Load the registration form and display it as a popup
-            fetch('/path-to-register-html') // Adjust the path to your register.html
+            fetch('/register.html') // Adjust the path to your register.html
                 .then(response => response.text())
                 .then(html => {
                     document.body.insertAdjacentHTML('beforeend', html);
