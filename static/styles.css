@@ -2,12 +2,47 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: Arial, sans-serif;
 }
+
 
 .dashboard {
     display: flex;
-    height: 100%;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f4f4f4;
 }
+/*START  side bar in dashboard */
+.sidebar {
+    width: 25%; /* Sidebar takes up 25% of the container width */
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content to the start of the sidebar */
+    align-items: center; /* Centers items horizontally in the sidebar */
+    padding: 20px; /* Add padding for spacing */
+}
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+    width: 100%; /* Full width of the sidebar */
+}
+
+.menu-section li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    border: 1px solid #ddd; /* Add border to each link */
+    margin-bottom: 5px; /* Space between links */
+}
+
+.main-content {
+    flex-grow: 1; /* Allows main content to take up the remaining space */
+    padding: 20px;
+    overflow-y: auto;
+}
+/*END side bar in dashboard */
 body {
     font-family: Arial, sans-serif;
     display: flex;
