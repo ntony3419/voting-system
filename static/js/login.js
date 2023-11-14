@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtn.addEventListener('click', function(event) {
             document.getElementById('register-popup').style.display = 'none';
         });
+        
         // close form for clicking outside of the register form
         window.addEventListener('click', function(event) {
-        if (event.target === registerPopup) {
+        if (!registerPopup.contains(event.target))  {
             registerPopup.style.display = 'none';
         }
     });
