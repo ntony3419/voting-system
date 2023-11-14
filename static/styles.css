@@ -132,5 +132,63 @@ body {
     border: 1px solid #ddd;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     z-index: 1000;
+    width: 300px; 
+}
+
+#register-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-popup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#register-popup input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+#register-popup button {
+    padding: 10px;
+    margin-top: 10px; 
+    border: none;
+    cursor: pointer;
+}
+
+/* Style for register and close buttons */
+#register-popup .button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#register-popup .button-container button {
+    flex-basis: 48%; 
+    margin-top: 0; 
+}
+
+#register-popup button:hover {
+    opacity: 0.8;
+}
+
+
+#register-popup #close-popup {
+    background-color: #ccc;
+    color: #333;
+}
+
+#register-popup #close-popup:hover {
+    background-color: #bbb;
+}
+
+#register-popup #register-btn {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+#register-popup #register-btn:hover {
+    background-color: #0056b3;
 }
 /* END Registration form pop up styling*/

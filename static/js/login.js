@@ -11,12 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     username: $('#username').val(),
                     password: $('#password').val()
                 },
-                success: function(response) {
-                    // Redirect to the dashboard or handle the response
+                success: function(response) {                    
                     window.location.href = '/dashboard';
                 },
-                error: function(error) {
-                    // Handle errors here
+                error: function(error) {                    
                     console.log(error);
                 }
             });
@@ -24,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // register button
     const registerBtn = document.getElementById('register-btn');
+    const registerPopup = document.getElementById('register-popup');
     if (registerBtn) {
         registerBtn.addEventListener('click', function(event) {
             event.preventDefault();
@@ -35,6 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtn.addEventListener('click', function(event) {
             document.getElementById('register-popup').style.display = 'none';
         });
+        // close form for clicking outside of the register form
+        window.addEventListener('click', function(event) {
+        if (event.target === registerPopup) {
+            registerPopup.style.display = 'none';
+        }
+    });
     }
     attachRegisterFormListener();
 });
