@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     //close pop up if click outside of the form
     window.addEventListener('click', function(event) {
-        if (!registerContent.contains(event.target) && event.target !== registerBtn) {
+        if (registerPopup.style.display === 'block' && !registerContent.contains(event.target)) {
             registerPopup.style.display = 'none';
         }
     });
