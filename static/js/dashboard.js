@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Add Candidate clicked'); // show in console the action
         showAddCandidateForm();
     });
+    
 });
 
 function showAddCandidateForm() {
