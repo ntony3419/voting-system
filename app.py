@@ -9,7 +9,7 @@ db= Database()
 
 
 # users colelction
-users = db.users_collection 
+users = db.users
 
 ## mongodb operation
 # add user function
