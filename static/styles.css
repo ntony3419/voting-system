@@ -115,7 +115,7 @@ body {
 
 
 /*add more styling as needed */
-#add-candidate-form {
+#add-candidate-form,#vote-form {
     width: 75%; 
     padding: 20px; 
     box-sizing: border-box;
