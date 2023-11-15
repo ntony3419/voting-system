@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
-from src.db import database
+from src.db import Database
 
 app = Flask(__name__)
 #mongodb connection
