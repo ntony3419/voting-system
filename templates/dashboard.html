@@ -8,6 +8,8 @@
 </head>
 <body>
     {% with messages = get_flashed_messages() %}
+
+        
       {% if messages %}
         <div class="flash-messages">
           {% for message in messages %}
@@ -15,6 +17,7 @@
           {% endfor %}
         </div>
       {% endif %}
+
     {% endwith %}
     <div class="dashboard">
         <div class="sidebar">
@@ -24,16 +27,29 @@
             <div class="menu-section">
                 <ul>
                     {% if 'voter' in roles %}
+
                     <li><a href="javascript:void(0)" id="for-voter">Vote</a></li>
                     {% endif %}
                     {% if 'admin' in roles %}
                     <li><a href="#" id="add-candidate">Add Candidate</a></li>
+
                     {% endif %}
                     <li><a href="/logout">Log Out</a></li>
                 </ul>                
             </div>
         </div>
         <div class="main-content">
+
+            <h1>Dashboard</h1>
+            <!-- File input for uploading PDF -->
+            <input type="file" id="pdf-upload" accept=".pdf">
+            <button onclick="handlePdfUpload()">Upload PDF</button>
+            <!-- Other content of your dashboard -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
             <!-- Content will be loaded here based on the selection -->
         </div>
     </div>
@@ -43,4 +59,5 @@
 </body>
 
     
+
 </html>
