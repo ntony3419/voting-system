@@ -1,0 +1,217 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; 
+    width:100%;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+
+    background-color: #f4f4f4;
+}
+
+
+.dashboard {
+    display: flex;
+    height: 100vh; 
+    width:100%;
+    background-color: #f4f4f4;
+}
+/*START  side bar in dashboard */
+
+.profile-section img {
+    max-width: 80%;
+    border-radius: 50%;
+}
+
+.sidebar {
+    width: 25%; 
+    background-color: #bebebe;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding: 20px;
+    height: 100vh;
+}
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+    width: 100%; 
+}
+
+.menu-section li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    border: 1px solid #ddd; 
+    margin-bottom: 5px; 
+}
+
+.main-content {
+    flex-grow: 1; /* main content to take up the remaining space */
+    padding: 20px;
+    overflow-y: auto;
+}
+/*END side bar in dashboard */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100%;
+    background-color: #f4f4f4;
+}
+
+.login-box {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #0056b3;
+}
+
+.login-box a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.login-box a:hover {
+    text-decoration: underline;
+}
+
+
+/*add more styling as needed */
+#add-candidate-form,#vote-form {
+    width: 75%; 
+    padding: 20px; 
+    box-sizing: border-box;
+}
+.main-content {
+    flex-grow: 1; 
+    padding: 20px; 
+    /* background-color: #ffffff;  */
+    overflow-y: auto; 
+}
+
+
+/* START Registration form pop up styling*/
+#register-popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+    width: 300px; 
+}
+
+#register-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-popup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#register-popup input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+#register-popup button {
+    padding: 10px;
+    margin-top: 10px; 
+    border: none;
+    cursor: pointer;
+}
+
+/* Style for register and close buttons */
+#register-popup .button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#register-popup .button-container button {
+    flex-basis: 48%; 
+    margin-top: 0; 
+}
+
+#register-popup button:hover {
+    opacity: 0.8;
+}
+
+
+#register-popup #close-popup {
+    background-color: #ccc;
+    color: #333;
+}
+
+#register-popup #close-popup:hover {
+    background-color: #bbb;
+}
+
+#register-popup #register-btn {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+#register-popup #register-btn:hover {
+    background-color: #0056b3;
+}
+
+/* END Registration form pop up styling*/
+
+
+.flash-messages {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.alert {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    text-align: center;
+}
