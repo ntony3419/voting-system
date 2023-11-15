@@ -4,11 +4,13 @@ from src.db import Database
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.user import *
 from src.auth import *
+import datetime
+
 
 app = Flask(__name__)
 ## session
 app.secret_key = 'thisisrandomvaluetest'
-app.permanent_session_lifetime = timedelta(minutes=1)
+
 #mongodb connection
 
 db= Database()
@@ -141,12 +143,12 @@ def add_candidate():
 @app.before_request
 def before_request():
     session.permanent = True  #
-    current_app.permanent_session_lifetime = timedelta(minutes=1)
+    app.permanent_session_lifetime = datetime.timedelta(minutes=1)
 
     last_activity = session.get('last_activity')
     if last_activity is not None:
         last_activity = datetime.strptime(last_activity, '%Y-%m-%dT%H:%M:%S.%f')
-        if datetime.now() - last_activity > current_app.permanent_session_lifetime:
+        if datetime.now() - last_activity > app.permanent_session_lifetime:
             session.clear()
             flash('You have been logged out due to inactivity.')
             return redirect(url_for('home'))
