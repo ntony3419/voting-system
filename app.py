@@ -62,12 +62,12 @@ def register():
     phone = data['phone']
     user_id = db.add_user(username, password, email, phone)
     # TODO: get data from encrypted function in login.js and process it to database
-    # if user_id:
-    #     # registered 
-    #     return jsonify({'message': 'user registered', 'id': str(user_id)})
-    # else:
-    #     # failed
-    #     return jsonify({'message': 'registration failed'}), 400
+    if user_id:
+        # registered 
+        return jsonify({'message': 'user registered', 'id': str(user_id)})
+    else:
+        # failed
+        return jsonify({'message': 'registration failed'}), 400
 
 
 @app.route('/forgot-password')

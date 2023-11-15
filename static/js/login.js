@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Login button
     $(document).ready(function() {
-        $('form').on('submit', function(e) {
+        $('#login-form').on('submit', function(e) {
             e.preventDefault(); // Prevent the default form submission
 
             $.ajax({
