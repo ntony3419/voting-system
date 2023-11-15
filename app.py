@@ -8,7 +8,7 @@ from src.user import *
 app = Flask(__name__)
 ## session
 app.secret_key = 'thisisrandomvaluetest'
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(minutes=1)
 #mongodb connection
 
 db= Database()

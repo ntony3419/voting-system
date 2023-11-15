@@ -1,4 +1,4 @@
-from flask import jsonify, request, redirect, url_for, session, current_app
+from flask import jsonify, request, redirect, url_for, session, current_app, flash
 from datetime import  timedelta,datetime
 
 from werkzeug.security import check_password_hash
@@ -33,6 +33,7 @@ class User():
         # Logic to end the user's session and clear session
         app=current_app
         session.clear()
+        flash('you have been log out for inactivity')
         return redirect(url_for('home'))
     
     
