@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function showAddCandidateForm() {
     // show the candidate form
     
-    fetch('/add_candidate')
+    fetch('/add-candidate')
     .then(response => response.text())
     .then(html => {
         document.querySelector('.main-content').innerHTML = html;
