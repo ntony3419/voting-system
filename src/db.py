@@ -42,4 +42,4 @@ class Database():
     @staticmethod
     def find_by_id(user_id):
         db = Database()
-        return db.users.find_one({'username': user_id})
+        return db.users.find_one({'_id': ObjectId(user_id)})

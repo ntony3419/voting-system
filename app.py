@@ -96,8 +96,13 @@ def forgot_password():
 @login_required
 def dashboard():
     user_id = session.get('user_id')
-    user = db.find_by_id(user_id)  
-    return render_template('dashboard.html', roles=user.roles)
+    user_data = db.find_by_id(user_id)  
+    if user_data:
+        user = User(user_data['username'], user_data['password'], user_data['roles'])
+        return render_template('dashboard.html', roles=user.roles)
+    else:
+        flash('User not found.')
+        return redirect(url_for('logout'))
 
 @app.route('/vote')
 @login_required

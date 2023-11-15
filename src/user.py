@@ -33,7 +33,9 @@ class User():
         # Logic to end the user's session and clear session
         
         return redirect(url_for('home'))
-    
+    def get_roles(self):
+        user_data = self.db.users.find_one({'_id': self._id})
+        return user_data.get('roles', [])
     
     def assign_role(self, role):
         # Logic to assign a role to the user
