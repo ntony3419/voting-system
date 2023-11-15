@@ -55,10 +55,10 @@ function attachRegisterFormListener() {
         registerForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const userData = {
-                username: document.getElementById('username').value,
-                password: document.getElementById('password').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value
+                username: document.getElementById('reg-username').value,
+                password: document.getElementById('reg-password').value,
+                email: document.getElementById('reg-email').value,
+                phone: document.getElementById('reg-phone').value
             };
     
             fetch('/register', {
@@ -72,11 +72,13 @@ function attachRegisterFormListener() {
             .then(data => {
                 console.log('Registration Success:', data);
                 //TODO: show pop up message register successfully
+                alert('Registration successful!');
                 registerPopup.style.display = 'none';
             })
             .catch((error) => {
                 console.error('Registration Error:', error);
                 // TODO: handle errors 
+                alert('Registration failed, please try again.');
             });
         });
     } else {

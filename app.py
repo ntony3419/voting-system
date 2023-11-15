@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
-from pymongo import MongoClient
-
+from src.db import database
 
 app = Flask(__name__)
-
 #mongodb connection
-client = MongoClient('mongodb://localhost:27017/')
-db=client['voting_system']
+
+db= Database()
+
 
 # users colelction
 users = db.users 
@@ -56,14 +55,19 @@ def login():
 
 @app.route('/register', methods=['POST'])
 def register():
-    username = request.json['username']
-    password = request.json['password']
-    email = request.json['email']
-    phone = request.json['phone']
-
+    data = request.get_json()  
+    username = data['username']
+    password = data['password']
+    email = data['email']
+    phone = data['phone']
+    user_id = db.add_user(username, password, email, phone)
     # TODO: get data from encrypted function in login.js and process it to database
-    return jsonify({'message': 'user registered'})
-
+    if user_id:
+        # registered 
+        return jsonify({'message': 'user registered', 'id': str(user_id)})
+    else:
+        # failed
+        return jsonify({'message': 'registration failed'}), 400
 
 
 @app.route('/forgot-password')
