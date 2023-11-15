@@ -70,7 +70,7 @@ function attachRegisterFormListener() {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Registration failed, please try again.');
+                    throw new Error('Registration failed with status ' + response.status);
                 }
                 return response.json();
             })
@@ -78,13 +78,14 @@ function attachRegisterFormListener() {
                 console.log('Registration Success:', data);
                 //TODO: show pop up message register successfully
                 alert('Registration successful!');
-                registerPopup.style.display = 'none';
+                
                 window.location.href = '/'; //atempt to go login page
             })
             .catch((error) => {
                 console.error('Registration Error:', error);
                 // TODO: handle errors 
-                alert('Registration failed, please try again.');
+                alert(error.message);
+
             });
         });
     } else {
