@@ -2,6 +2,7 @@ from functools import wraps
 from flask import session, redirect, url_for, current_app,flash
 from datetime import datetime
 from .db import Database
+from src.user import User
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -17,8 +18,9 @@ def role_required(*roles):
             user_id = session.get('user_id')
             if not user_id:
                 return redirect(url_for('login'))
-            user = Database.find_by_id(user_id) 
-            if not user or not user.has_role(*roles):
+            user_data = Database.find_by_id(user_id) 
+            user = User.from_dict(user_data)
+            if not user or not user.has_permission(*roles):
                 flash('You do not have access to this resource.')
                 return redirect(url_for('dashboard'))
             return f(*args, **kwargs)

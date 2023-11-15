@@ -45,4 +45,10 @@ class User():
         # Logic to check if the user has a certain permission
         return any(role in self.roles for role in roles)
 
+    @classmethod
+    def from_dict(cls, data):
+        
+        username = data.get('username')
+        roles = data.get('roles', [])
+        return cls(username=username, password=None, roles=roles)  # Password is not used here
     
