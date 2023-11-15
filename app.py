@@ -138,7 +138,20 @@ def add_candidate():
     else:
         return render_template('add_candidate.html')
 
+@app.before_request
+def before_request():
+    session.permanent = True  #
+    current_app.permanent_session_lifetime = timedelta(minutes=1)
 
+    last_activity = session.get('last_activity')
+    if last_activity is not None:
+        last_activity = datetime.strptime(last_activity, '%Y-%m-%dT%H:%M:%S.%f')
+        if datetime.now() - last_activity > current_app.permanent_session_lifetime:
+            session.clear()
+            flash('You have been logged out due to inactivity.')
+            return redirect(url_for('home'))
+
+    session['last_activity'] = datetime.now().isoformat()
 
 def fetch_candidates():
     #TODO: logic to retrieve all candidate from mongodb
