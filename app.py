@@ -4,7 +4,7 @@ from src.db import Database
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.user import *
 from src.auth import *
-import datetime
+from datetime import datetime, timedelta
 
 
 app = Flask(__name__)
@@ -143,7 +143,7 @@ def add_candidate():
 @app.before_request
 def before_request():
     session.permanent = True  #
-    app.permanent_session_lifetime = datetime.timedelta(minutes=1)
+    app.permanent_session_lifetime = timedelta(minutes=1)
 
     last_activity = session.get('last_activity')
     if last_activity is not None:
