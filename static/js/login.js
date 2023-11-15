@@ -19,10 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             window.location.href = response.redirect;
                         }
                     },
-                    error: function(error) {                    
-                        console.log(error);
-                        var error = response.responseJSON && response.responseJSON.error;
-                        alert(error || 'Login failed: Invalid username or password.');
+                    error: function(jqXHR, textStatus, errorThrown) {       
+                        if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+                            alert(jqXHR.responseJSON.error);
+                        } else {                            
+                            alert('Login failed: Invalid username or password.');
+                        }
                     }
                 });
             }else {
