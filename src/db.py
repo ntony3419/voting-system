@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from werkzeug.securitty import check_password_hash,generate_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
+
 
 class database():
     def __init__(self):
