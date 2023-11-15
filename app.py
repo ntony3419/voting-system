@@ -1,3 +1,4 @@
+import pyotp
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
 from src.db import Database
@@ -10,6 +11,7 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 ## session
 app.secret_key = 'thisisrandomvaluetest'
+key = "NeuralNineSuperSecretKey"
 
 #mongodb connection
 
@@ -29,6 +31,14 @@ def add_user():
     
     user_id = users.insert_one({'name': name, 'age': age, 'position': position}).inserted_id
     return jsonify({'id': str(user_id)})
+
+@app.route('/verify-totp', methods=['POST'])
+def verify_totp():
+    data = request.get_json()
+    user_code = data.get('code', '')
+    totp = pyotp.TOTP(key)
+    is_valid = totp.verify(user_code)
+    return jsonify({'isValid': is_valid})
 
 @app.route('/users', methods=['GET'])
 def get_users():

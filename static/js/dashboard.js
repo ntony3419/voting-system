@@ -49,11 +49,11 @@ window.handlePdfUpload = function() {
     const pdfInput = document.getElementById('pdf-upload');
     const pdfFile = pdfInput.files[0];
 
-    // Prompt the user for a six-digit code
-    const userCode = prompt('Please enter the six-digit code:');
-    const validCode = '974310';
+    // Prompt the user for the TOTP code
+    const userCode = prompt('Please enter the TOTP code:');
+    const isValidCode = verifyTOTP(userCode);
 
-    if (userCode === validCode) {
+    if (isValidCode) {
         if (pdfFile) {
             if (pdfFile.type === 'application/pdf') {
                 // PDF file is valid, you can perform actions here
@@ -84,6 +84,24 @@ window.handlePdfUpload = function() {
             alert('Please choose a PDF document to upload.');
         }
     } else {
-        alert('Invalid code. Please enter the correct six-digit code.');
+        alert('Invalid TOTP code. Please enter the correct code.');
     }
 };
+
+// Function to verify TOTP code on the server side
+function verifyTOTP(code) {
+    // Send the TOTP code to the server for verification
+    return fetch('/verify-totp', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+    })
+    .then(response => response.json())
+    .then(data => data.isValid)
+    .catch(error => {
+        console.error('Error verifying TOTP:', error);
+        return false;
+    });
+}
