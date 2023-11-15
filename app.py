@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
 from src.db import Database
-
+from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 #mongodb connection
 
@@ -53,6 +53,14 @@ def login():
     else:
         return redirect(url_for('home, error = "invalid credential'))
 
+def verify_cred(username,password):
+    user = db.find_user_by_username(username)
+    if user and check_password_hash(user['password'], password):
+        return True
+    else:
+        return False
+    
+    
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()  
