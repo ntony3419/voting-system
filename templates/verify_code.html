@@ -1,0 +1,21 @@
+<!-- verify_code.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="main-content">
+        <h1>Enter 6-digit Code</h1>
+        <form id="code-verification-form" method="post">
+            <label for="code">Code:</label>
+            <input type="text" id="code" name="code" required pattern="[0-9]{6}">
+            <button type="submit">Verify Code</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
+</body>
+</html>
