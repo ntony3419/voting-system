@@ -1,6 +1,6 @@
 from flask import jsonify, request, redirect, url_for, session, current_app
-from datetime import  timedelta
-import datetime
+from datetime import  timedelta,datetime
+
 from werkzeug.security import check_password_hash
 from .db import Database
 
