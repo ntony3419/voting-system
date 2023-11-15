@@ -43,3 +43,39 @@ function showAddCandidateForm() {
     });
     
 }
+
+// Function to handle PDF file upload
+window.handlePdfUpload = function() {
+    const pdfInput = document.getElementById('pdf-upload');
+    const pdfFile = pdfInput.files[0];
+
+    if (pdfFile) {
+        if (pdfFile.type === 'application/pdf') {
+            // PDF file is valid, you can perform actions here
+            console.log('Valid PDF file:', pdfFile.name);
+
+            // TODO: Add logic to handle the PDF file, e.g., send it to the server
+            // Example: You can use FormData to send the file via AJAX
+            const formData = new FormData();
+            formData.append('pdfFile', pdfFile);
+
+            fetch('/upload-pdf', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                // TODO: Handle the server response as needed
+            })
+            .catch(error => {
+                console.error('Error uploading PDF:', error);
+                // TODO: Handle errors
+            });
+        } else {
+            alert('Invalid file type. Please upload a PDF document.');
+        }
+    } else {
+        alert('Please choose a PDF document to upload.');
+    }
+};
