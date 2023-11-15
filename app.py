@@ -133,12 +133,12 @@ def vote():
             'position': 'Secretary'
         }
     ]
-    if request.method == 'POST':
-        # TODO logic to vote a candidate and save it to mongodb
-        pass
-    else: # display vote table where show all candidates
+    # if request.method == 'POST':
+    #     # TODO logic to vote a candidate and save it to mongodb
+    #     pass
+    # else: # display vote table where show all candidates
         
-        return render_template('vote.html', candidates=candidates)
+    return render_template('vote.html', candidates=candidates)
    
 
 @app.route('/add-candidate', methods=['GET', 'POST'])

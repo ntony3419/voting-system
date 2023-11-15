@@ -17,11 +17,11 @@
                 <h2>{{ candidate.name }}</h2>
                 <p>Age: {{ candidate.age }}</p>
                 <p>Position: {{ candidate.position }}</p>
-                <button onclick="voteForCandidate('{{ candidate.id }}')">Vote</button>
+                <!-- <button onclick="voteForCandidate('{{ candidate.id }}')">Vote</button> -->
             </div>
             {% endfor %}
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/general.js') }}"></script> -->
 </body>
 </html>
