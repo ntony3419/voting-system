@@ -16,7 +16,7 @@ db= Database()
 
 # users colelction
 users = db.users
-data = request.get_json() #user data from form in front end
+
 ## mongodb operation
 # add user function
 @app.route('/add-user', methods=['POST'])
@@ -52,6 +52,7 @@ def home():
 @app.route('/login', methods=['POST'])
 def handle_login():    
     from src.auth import login_required
+    data = request.get_json() #user data from form in front end
     username = data.get('username')
     password = data.get('password')
     user_class = User(username,password)
@@ -60,6 +61,7 @@ def handle_login():
 @app.route('/logout')
 def handle_logout():
     # TODO: end all session al return to signin page
+    data = request.get_json() #user data from form in front end
     username = data.get('username')
     password = data.get('password')
     user_class = User(username,password)
