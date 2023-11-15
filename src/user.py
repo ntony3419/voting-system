@@ -1,4 +1,4 @@
-from flask import jsonify, request, redirect, url_for, session
+from flask import jsonify, request, redirect, url_for, session, current_app
 from datetime import  timedelta
 import datetime
 from werkzeug.security import check_password_hash

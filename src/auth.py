@@ -14,7 +14,7 @@ def login_required(f):
         last_activity = datetime.fromisoformat(session.get('last_activity'))
         if (datetime.now() - last_activity) > current_app.permanent_session_lifetime:
             # Session has timed out
-            return logout()
+            return redirect(url_for('home'))
         
         # Update last activity time
         session['last_activity'] = datetime.now().isoformat()
