@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
-class database():
+class Database():
     def __init__(self):
         self.client = MongoClient('mongodb://localhost:27017/')
         self.db = self.client['voting_system']
