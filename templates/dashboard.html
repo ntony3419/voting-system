@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="path_to_profile_image.jpg" alt="Profile Image">
+            </div>
+            <div class="menu-section">
+                <ul>
+                    {% if 'voter' in roles %}
+                    <li><a href="javascript:void(0)" id="for-voter">Vote</a></li>
+                    {% endif %}
+                    {% if 'admin' in roles %}
+                    <li><a href="#" id="add-candidate">Add Candidate</a></li>
+                    {% endif %}
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>                
+            </div>
+        </div>
+        <div class="main-content">
+            <!-- Content will be loaded here based on the selection -->
+        </div>
+    </div>
+    
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
+    
+</html>
