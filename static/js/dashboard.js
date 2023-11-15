@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showAddCandidateForm();
     });
     //show vote form
-    document.querySelector('a[href="/vote"]').addEventListener('click', function(event) {
+    document.getElementById('for-voter').addEventListener('click', function(event) {
         event.preventDefault();
         console.log('Vote clicked');
         showVoteForm();
