@@ -15,7 +15,7 @@ body, html {
 .dashboard {
     display: flex;
     height: 100vh; 
-    width:100%
+    width:100%;
     background-color: #f4f4f4;
 }
 /*START  side bar in dashboard */

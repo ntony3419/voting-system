@@ -6,7 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Attach event listener to the form submit button
     document.getElementById('add-user-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submit
-        addUser();
+        if (addUserForm) {
+            addUserForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                addUser();
+            });
+        }
     });
 
 

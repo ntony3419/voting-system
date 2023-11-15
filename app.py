@@ -87,7 +87,8 @@ def add_candidate():
     if request.method == 'POST':
         # TODO logic to add a candidate to MongoDB
         pass
-    return render_template('add_candidate.html')
+    else:
+        return render_template('add_candidate.html')
 
 @app.route('/logout')
 def logout():
@@ -101,4 +102,4 @@ def verify_cred(username, password):
     return True
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
