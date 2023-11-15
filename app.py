@@ -56,7 +56,7 @@ def login():
         return redirect(url_for('home, error = "invalid credential'))
 
 def verify_cred(username,password):
-    user = db.find_user_by_username(username)
+    user = db.verify_user(username)
     if user and check_password_hash(user['password'], password):
         return True
     else:
