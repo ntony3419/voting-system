@@ -2,7 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
 from src.db import Database
 from werkzeug.security import generate_password_hash, check_password_hash
+from src.user import *
 app = Flask(__name__)
+## session
+
 #mongodb connection
 
 db= Database()
@@ -10,7 +13,7 @@ db= Database()
 
 # users colelction
 users = db.users
-
+data = request.get_json() #user data from form in front end
 ## mongodb operation
 # add user function
 @app.route('/add-user', methods=['POST'])
@@ -44,19 +47,16 @@ def home():
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
-def login():
-    data = request.get_json()
+def handle_login():    
     username = data.get('username')
     password = data.get('password')
-    # TODO : verify login information and redirect to dashboard if all is correect
-    if not username or not password:
-        return jsonify({'error': 'Username and password are required'}), 400
-    user = db.verify_user(username,password)
-    if user:
-        return  jsonify({'redirect': url_for('dashboard')})
-    else:
-        return jsonify({'error': 'Invalid credentials'}), 401
+    user_class = User(username,password)
+    return user_class.login()
 
+@app.route('/logout')
+def handle_logout():
+    # TODO: end all session al return to signin page
+    return logout()
     
 
 @app.route('/register', methods=['POST'])
@@ -129,10 +129,7 @@ def add_candidate():
     else:
         return render_template('add_candidate.html')
 
-@app.route('/logout')
-def logout():
-    # TODO: end all session al return to signin page
-    return redirect(url_for('home'))
+
 
 def fetch_candidates():
     #TODO: logic to retrieve all candidate from mongodb
