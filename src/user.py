@@ -35,7 +35,7 @@ class User():
         session.clear()
         return redirect(url_for('home'))
     
-    @login_required
+    
     def assign_role(self, role):
         # Logic to assign a role to the user
         pass
