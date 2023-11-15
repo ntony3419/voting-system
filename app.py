@@ -1,4 +1,4 @@
-import pyotp
+
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 # TODO: import library for mongodb connection
 from src.db import Database
@@ -6,13 +6,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from src.user import *
 from src.auth import *
 from datetime import datetime, timedelta
-
+import pyotp
 
 app = Flask(__name__)
 ## session
 app.secret_key = 'thisisrandomvaluetest'
-key = "NeuralNineSuperSecretKey"
 
+key = "NeuralNineSuperSecretKey"
 #mongodb connection
 
 db= Database()
@@ -44,8 +44,7 @@ def verify_totp():
     else:
         # Code is incorrect, show a prompt or send a message
         return jsonify({'message': 'Incorrect TOTP code. Please try again.'})
-    
-
+      
 @app.route('/users', methods=['GET'])
 def get_users():
     all_users = list(users.find())

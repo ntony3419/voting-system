@@ -42,6 +42,7 @@ function showAddCandidateForm() {
         console.error('Error fetching add candidate form:', error);
     });
     
+
 }
 
 // Function to handle PDF file upload
