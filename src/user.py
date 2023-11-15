@@ -1,7 +1,10 @@
-from flask import jsonify, request, redirect, url_for
+from flask import jsonify, request, redirect, url_for, session
+from datetime import  timedelta
+import datetime
 from werkzeug.security import check_password_hash
 from .db import Database
-
+from app import app
+from auth import login_required
 class User():
     def __init__(self, username, password, roles=None):
         self.db = Database()
@@ -16,8 +19,11 @@ class User():
             return jsonify({'error': 'Username and password are required'}), 400
         user = self.db.verify_user(self.username, self.password)
         if user:
-            # User is authenticated
-            # You may want to set up session/login manager here
+            #session create
+            app.permanent_session_lifetime = timedelta(minutes=1)
+            session['user_id'] = str(user['_id'])  # or any unique identifier
+            session['last_activity'] = datetime.now().isoformat()
+            session.permanent = True  
             return jsonify({'redirect': url_for('dashboard')})
         else:
             # User is not authenticated
@@ -25,8 +31,10 @@ class User():
 
     def logout(self):
         # Logic to end the user's session and clear session
+        session.clear()
         return redirect(url_for('home'))
-
+    
+    @login_required
     def assign_role(self, role):
         # Logic to assign a role to the user
         pass
