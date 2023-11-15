@@ -68,12 +68,18 @@ function attachRegisterFormListener() {
                 },
                 body: JSON.stringify(userData),
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Registration failed, please try again.');
+                }
+                return response.json();
+            })
             .then(data => {
                 console.log('Registration Success:', data);
                 //TODO: show pop up message register successfully
                 alert('Registration successful!');
                 registerPopup.style.display = 'none';
+                window.location.href = '/'; //atempt to go login page
             })
             .catch((error) => {
                 console.error('Registration Error:', error);
