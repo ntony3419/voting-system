@@ -77,8 +77,7 @@ function attachRegisterFormListener() {
             .then(data => {
                 console.log('Registration Success:', data);
                 //TODO: show pop up message register successfully
-                alert('Registration successful!');
-                
+                alert('Registration successful!');                
                 window.location.href = '/'; //atempt to go login page
             })
             .catch((error) => {
