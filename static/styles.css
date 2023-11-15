@@ -200,3 +200,18 @@ body {
 }
 
 /* END Registration form pop up styling*/
+
+
+.flash-messages {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.alert {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    text-align: center;
+}

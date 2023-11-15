@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from src.db import Database
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.user import *
-
+from src.auth import *
 
 app = Flask(__name__)
 ## session
@@ -61,7 +61,9 @@ def handle_login():
 @app.route('/logout')
 def handle_logout():
     # TODO: end all session al return to signin page
-    
+    app=current_app
+    session.clear()
+    flash('you have been log out for inactivity')
     return User.logout()
     
 
@@ -89,6 +91,7 @@ def forgot_password():
     return redirect(url_for('home'))
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     return render_template('dashboard.html')
 
