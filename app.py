@@ -62,7 +62,7 @@ def handle_login():
 def handle_logout():
     # TODO: end all session al return to signin page
     
-    return User().logout()
+    return User.logout()
     
 
 @app.route('/register', methods=['POST'])

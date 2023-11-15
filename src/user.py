@@ -29,7 +29,7 @@ class User():
             # User is not authenticated
             return jsonify({'error': 'Invalid credentials'}), 401
     @staticmethod
-    def logout(self):
+    def logout():
         # Logic to end the user's session and clear session
         app=current_app
         session.clear()
