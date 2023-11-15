@@ -14,12 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         'username': username,
                         'password': password
                     }),
-                    success: function(response) {                    
-                        window.location.href = '/dashboard';
+                    success: function(response) {     
+                        if (response.redirect) {               
+                            window.location.href = response.redirect;
+                        }
                     },
                     error: function(error) {                    
                         console.log(error);
-                        alert('Login failed: Invalid username or password.');
+                        var error = response.responseJSON && response.responseJSON.error;
+                        alert(error || 'Login failed: Invalid username or password.');
                     }
                 });
             }else {

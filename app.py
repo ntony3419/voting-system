@@ -49,18 +49,12 @@ def login():
     username = request.form['username']
     password = request.form['password']
     # TODO : verify login information and redirect to dashboard if all is correect
-    
-    if verify_cred(username,password):
-        return redirect(url_for('dashboard'))
+    user = db.verify_user(username,password)
+    if user:
+        return  jsonify({'redirect': url_for('dashboard')})
     else:
-        return redirect(url_for('home, error = "invalid credential'))
+        return sonify({'error': 'Invalid credentials'}), 401
 
-def verify_cred(username,password):
-    user = db.verify_user(username)
-    if user and check_password_hash(user['password'], password):
-        return True
-    else:
-        return False
     
 
 @app.route('/register', methods=['POST'])
