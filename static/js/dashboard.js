@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
         showAddCandidateForm();
     });
     //show vote form
-    document.getElementById('for-voter').addEventListener('click', function(event) {
-        event.preventDefault();
-        console.log('Vote clicked');
-        showVoteForm();
-    });
+    var voteButton = document.getElementById('for-voter');
+    if (voteButton) {
+        voteButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            showVoteForm();
+        });
+    }
     
 });
 // show vote fomr
