@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     //  show the add candidate form
-    document.getElementById('add-candidate').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        console.log('Add Candidate clicked'); // show in console the action
-        showAddCandidateForm();
-    });
+    var addCandidateButton = document.getElementById('add-candidate');
+
+    if (addCandidateButton) {
+        addCandidateButton.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            console.log('Add Candidate clicked');
+            showAddCandidateForm();
+        });
+    }
     //show vote form
     var voteButton = document.getElementById('for-voter');
     if (voteButton) {
