@@ -104,7 +104,7 @@ def dashboard():
         flash('User not found.')
         return redirect(url_for('logout'))
 
-@app.route('/vote')
+@app.route('/vote', methods=['GET', 'POST'])
 @login_required
 @role_required('user', 'voter')
 def vote():
@@ -135,7 +135,7 @@ def vote():
     ]
     if request.method == 'POST':
         # TODO logic to vote a candidate and save it to mongodb
-        return render_template('vote.html')
+        pass
     else: # display vote table where show all candidates
         
         return render_template('vote.html', candidates=candidates)
