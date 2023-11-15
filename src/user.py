@@ -3,8 +3,8 @@ from datetime import  timedelta
 import datetime
 from werkzeug.security import check_password_hash
 from .db import Database
-from app import app
-from auth import login_required
+
+
 class User():
     def __init__(self, username, password, roles=None):
         self.db = Database()
@@ -14,7 +14,7 @@ class User():
         self.session = None
 
     def login(self):
-        
+        app=current_app
         if not self.username or not self.password:
             return jsonify({'error': 'Username and password are required'}), 400
         user = self.db.verify_user(self.username, self.password)
@@ -31,6 +31,7 @@ class User():
 
     def logout(self):
         # Logic to end the user's session and clear session
+        app=current_app
         session.clear()
         return redirect(url_for('home'))
     

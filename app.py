@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from src.db import Database
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.user import *
-from src.auth import login_required
+
 
 app = Flask(__name__)
 ## session
@@ -50,8 +50,8 @@ def home():
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
-@login_required
 def handle_login():    
+    from src.auth import login_required
     username = data.get('username')
     password = data.get('password')
     user_class = User(username,password)
@@ -60,6 +60,9 @@ def handle_login():
 @app.route('/logout')
 def handle_logout():
     # TODO: end all session al return to signin page
+    username = data.get('username')
+    password = data.get('password')
+    user_class = User(username,password)
     return user_class.logout()
     
 

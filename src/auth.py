@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import session, redirect, url_for
+from flask import session, redirect, url_for, current_app
 from datetime import datetime
 
 def login_required(f):
@@ -12,7 +12,7 @@ def login_required(f):
 
         # Check for session timeout due to inactivity
         last_activity = datetime.fromisoformat(session.get('last_activity'))
-        if (datetime.now() - last_activity) > app.permanent_session_lifetime:
+        if (datetime.now() - last_activity) > current_app.permanent_session_lifetime:
             # Session has timed out
             return logout()
         
