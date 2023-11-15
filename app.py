@@ -80,7 +80,36 @@ def dashboard():
 def vote():
     #fetch candidates from MongoDB
     candidates = fetch_candidates()
-    return render_template('vote.html', candidates=candidates)
+    candidates = [
+        {
+            'id': '1',
+            'image_url': 'path_to_image_1.jpg',
+            'name': 'John Doe',
+            'age': '30',
+            'position': 'President'
+        },
+        {
+            'id': '2',
+            'image_url': 'path_to_image_2.jpg',
+            'name': 'Jane Smith',
+            'age': '28',
+            'position': 'Vice President'
+        },
+        {
+            'id': '3',
+            'image_url': 'path_to_image_3.jpg',
+            'name': 'Emily Johnson',
+            'age': '35',
+            'position': 'Secretary'
+        }
+    ]
+    if request.method == 'POST':
+        # TODO logic to vote a candidate and save it to mongodb
+        return render_template('vote.html')
+    else: # display vote table where show all candidates
+        
+        return render_template('vote.html', candidates=candidates)
+   
 
 @app.route('/add-candidate', methods=['GET', 'POST'])
 def add_candidate():
@@ -96,6 +125,7 @@ def logout():
     return redirect(url_for('home'))
 
 def fetch_candidates():
+    #TODO: logic to retrieve all candidate from mongodb
     pass
 def verify_cred(username, password):
     # TODO: method to validate the username and password 

@@ -7,10 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+// show vote fomr
+function showVoteForm(){
+    fetch('/vote')
+    .then(response => response.text())
+    .then(html => {
+        document.querySelector('.main-content').innerHTML = html;
+    })
+    .catch(error => {
+        console.error('Error fetching vote form:', error);
+    });
+}
 
 function showAddCandidateForm() {
-    // show the candidate form
-    
+    // show the candidate form    
     fetch('/add-candidate')
     .then(response => response.text())
     .then(html => {
