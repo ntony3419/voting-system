@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import session, redirect, url_for, current_app,flash
 from datetime import datetime
-from db import Database
+from .db import Database
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
