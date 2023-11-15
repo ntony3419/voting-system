@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Add Candidate clicked'); // show in console the action
         showAddCandidateForm();
     });
+    //show vote form
+    document.querySelector('a[href="/vote"]').addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log('Vote clicked');
+        showVoteForm();
+    });
     
 });
 // show vote fomr
