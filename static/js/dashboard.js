@@ -42,6 +42,7 @@ function showAddCandidateForm() {
         console.error('Error fetching add candidate form:', error);
     });
     
+
 }
 
 // Function to handle PDF file upload
@@ -104,4 +105,5 @@ function verifyTOTP(code) {
         console.error('Error verifying TOTP:', error);
         return false;
     });
+
 }
