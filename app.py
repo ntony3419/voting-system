@@ -54,7 +54,7 @@ def login():
         return jsonify({'error': 'Username and password are required'}), 400
     user = db.verify_user(username,password)
     if user:
-        return  jsonify({'redirect': url_for('dashboard')})
+        return  jsonify({'redirect': url_for('verify')})
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
 
@@ -130,8 +130,8 @@ def add_candidate():
     else:
         return render_template('add_candidate.html')
     
-@app.route('/verify-code', methods=['POST'])
-def verify_code():
+@app.route('/verify', methods=['POST'])
+def verify():
     key = "NeuralNineSuperSecretKey"
     totp = pyotp.TOTP(key)
     entered_code = request.form.get('code')
