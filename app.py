@@ -45,9 +45,11 @@ def home():
 
 @app.route('/login', methods=['POST'])
 def login():
+    data = request.get_json()
     username = request.form['username']
     password = request.form['password']
     # TODO : verify login information and redirect to dashboard if all is correect
+    
     if verify_cred(username,password):
         return redirect(url_for('dashboard'))
     else:
@@ -60,7 +62,7 @@ def verify_cred(username,password):
     else:
         return False
     
-    
+
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()  

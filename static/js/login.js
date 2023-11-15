@@ -3,21 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     $(document).ready(function() {
         $('#login-form').on('submit', function(e) {
             e.preventDefault(); // Prevent the default form submission
-
-            $.ajax({
-                type: 'POST',
-                url: '/login',
-                data: {
-                    username: $('#username').val(),
-                    password: $('#password').val()
-                },
-                success: function(response) {                    
-                    window.location.href = '/dashboard';
-                },
-                error: function(error) {                    
-                    console.log(error);
-                }
-            });
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if (username && password) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    contentType: 'application/json;charset=UTF-8',
+                    data: JSON.stringify({
+                        'username': username,
+                        'password': password
+                    }),
+                    success: function(response) {                    
+                        window.location.href = '/dashboard';
+                    },
+                    error: function(error) {                    
+                        console.log(error);
+                        alert('Login failed: Invalid username or password.');
+                    }
+                });
+            }else {
+                alert('Please enter both username and password.');
+            }
+            
         });
     });
     // register button

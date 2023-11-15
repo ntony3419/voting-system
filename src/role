@@ -1,0 +1,16 @@
+class Role:
+    def __init__(self, role_name, permissions=None):
+        self.role_name = role_name
+        self.permissions = permissions if permissions else []
+
+    def add_permission(self, permission):
+        # Logic to add a permission to the role
+        pass
+
+    def remove_permission(self, permission):
+        # Logic to remove a permission from the role
+        pass
+
+    def has_permission(self, permission):
+        # Logic to check if the role has a certain permission
+        pass
