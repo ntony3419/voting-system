@@ -38,7 +38,13 @@ def verify_totp():
     user_code = data.get('code', '')
     totp = pyotp.TOTP(key)
     is_valid = totp.verify(user_code)
-    return jsonify({'isValid': is_valid})
+    if is_valid:
+        # Code is valid, redirect to the dashboard or another page
+        return jsonify({'isValid': is_valid})
+    else:
+        # Code is incorrect, show a prompt or send a message
+        return jsonify({'message': 'Incorrect TOTP code. Please try again.'})
+    
 
 @app.route('/users', methods=['GET'])
 def get_users():
