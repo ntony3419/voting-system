@@ -38,3 +38,8 @@ class Database():
             return user
         else:
             return None
+    
+    @staticmethod
+    def find_by_id(user_id):
+        db = Database()
+        return db.users.find_one({'username': user_id})

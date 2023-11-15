@@ -95,9 +95,13 @@ def forgot_password():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    user_id = session.get('user_id')
+    user = db.find_by_id(user_id)  
+    return render_template('dashboard.html', roles=user.roles)
 
 @app.route('/vote')
+@login_required
+@role_required('user', 'voter')
 def vote():
     #fetch candidates from MongoDB
     candidates = fetch_candidates()
@@ -133,6 +137,8 @@ def vote():
    
 
 @app.route('/add-candidate', methods=['GET', 'POST'])
+@login_required
+@role_required('user', 'admin')
 def add_candidate():
     if request.method == 'POST':
         # TODO logic to add a candidate to MongoDB

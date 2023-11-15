@@ -39,8 +39,8 @@ class User():
         # Logic to assign a role to the user
         pass
 
-    def has_permission(self, permission):
+    def has_permission(self, *roles):
         # Logic to check if the user has a certain permission
-        pass
+        return any(role in self.roles for role in roles)
 
     
