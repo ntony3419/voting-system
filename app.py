@@ -46,14 +46,16 @@ def home():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    username = request.form['username']
-    password = request.form['password']
+    username = data.get('username')
+    password = data.get('password')
     # TODO : verify login information and redirect to dashboard if all is correect
+    if not username or not password:
+        return jsonify({'error': 'Username and password are required'}), 400
     user = db.verify_user(username,password)
     if user:
         return  jsonify({'redirect': url_for('dashboard')})
     else:
-        return sonify({'error': 'Invalid credentials'}), 401
+        return jsonify({'error': 'Invalid credentials'}), 401
 
     
 
