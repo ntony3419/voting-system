@@ -49,33 +49,41 @@ window.handlePdfUpload = function() {
     const pdfInput = document.getElementById('pdf-upload');
     const pdfFile = pdfInput.files[0];
 
-    if (pdfFile) {
-        if (pdfFile.type === 'application/pdf') {
-            // PDF file is valid, you can perform actions here
-            console.log('Valid PDF file:', pdfFile.name);
+    // Prompt the user for a six-digit code
+    const userCode = prompt('Please enter the six-digit code:');
+    const validCode = '974310';
 
-            // TODO: Add logic to handle the PDF file, e.g., send it to the server
-            // Example: You can use FormData to send the file via AJAX
-            const formData = new FormData();
-            formData.append('pdfFile', pdfFile);
+    if (userCode === validCode) {
+        if (pdfFile) {
+            if (pdfFile.type === 'application/pdf') {
+                // PDF file is valid, you can perform actions here
+                console.log('Valid PDF file:', pdfFile.name);
 
-            fetch('/upload-pdf', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Server response:', data);
-                // TODO: Handle the server response as needed
-            })
-            .catch(error => {
-                console.error('Error uploading PDF:', error);
-                // TODO: Handle errors
-            });
+                // TODO: Add logic to handle the PDF file, e.g., send it to the server
+                // Example: You can use FormData to send the file via AJAX
+                const formData = new FormData();
+                formData.append('pdfFile', pdfFile);
+
+                fetch('/upload-pdf', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+                    // TODO: Handle the server response as needed
+                })
+                .catch(error => {
+                    console.error('Error uploading PDF:', error);
+                    // TODO: Handle errors
+                });
+            } else {
+                alert('Invalid file type. Please upload a PDF document.');
+            }
         } else {
-            alert('Invalid file type. Please upload a PDF document.');
+            alert('Please choose a PDF document to upload.');
         }
     } else {
-        alert('Please choose a PDF document to upload.');
+        alert('Invalid code. Please enter the correct six-digit code.');
     }
 };
